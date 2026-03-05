@@ -1,7 +1,14 @@
 // External libraries
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// Components/pages
+// Components
+import HeaderComponent from './components/HeaderComponent';
+import FooterComponent from './components/FooterComponent';
+
+// User Components
+import RoutesWithUserChatComponent from './components/user/RoutesWithUserChatComponent';
+
+// Publicly available pages
 import HomePage from './pages/HomePage';
 import CartPage from './pages/CartPage';
 import LoginPage from './pages/LoginPage';
@@ -32,28 +39,34 @@ import AdminUsersPage from './pages/admin/AdminUsersPage';
 function App() {
   return (
     <BrowserRouter>
+      <HeaderComponent />
       <Routes>
-        {/* Public routes */}
-        <Route path="/" element={<HomePage />} />
-        <Route path="/product-list" element={<ProductListPage />} />
-        <Route path="/product-details/:id" element={<ProductDetailsPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        {/* <Route element={<RoutesWithUserChatComponent />}> */}
+          {/* Public routes */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/product-list" element={<ProductListPage />} />
+          <Route path="/product-details/:id" element={<ProductDetailsPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
 
-        {/* User protected routes */}
-        <Route element={<ProtectedRoutesComponent admin={false} />}>
-          <Route path="/user" element={<UserProfilePage />} />
-          <Route path="/user/my-orders" element={<UserOrdersPage />} />
-          <Route path="/user/cart-details" element={<UserCartDetailsPage />} />
-          <Route
-            path="/user/order-details"
-            element={<UserOrderDetailsPage />}
-          />
-        </Route>
+          {/* User protected routes */}
+          <Route element={<ProtectedRoutesComponent admin={false} />}>
+            <Route path="/user" element={<UserProfilePage />} />
+            <Route path="/user/my-orders" element={<UserOrdersPage />} />
+            <Route
+              path="/user/cart-details"
+              element={<UserCartDetailsPage />}
+            />
+            <Route
+              path="/user/order-details"
+              element={<UserOrderDetailsPage />}
+            />
+          </Route>
+        {/* </Route> */}
 
         {/* Admin protected routes */}
-        <Route element={<ProtectedRoutesComponent admin={true} />}>
+        <Route element={<ProtectedRoutesComponent admin={false} />}>
           <Route path="/admin/users" element={<AdminUsersPage />} />
           <Route path="/admin/edit-user" element={<AdminEditUserPage />} />
           <Route path="/admin/products" element={<AdminProductsPage />} />
@@ -77,6 +90,7 @@ function App() {
         {/* Catch-all */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <FooterComponent />
     </BrowserRouter>
   );
 }
