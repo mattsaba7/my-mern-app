@@ -1,14 +1,15 @@
 // External libraries
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// Components
+// Layout Components
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
 
-// User Components
+// Route Wrappers
+import ProtectedRoutesComponent from './components/ProtectedRoutesComponent';
 import RoutesWithUserChatComponent from './components/user/RoutesWithUserChatComponent';
 
-// Publicly available pages
+// Public Pages
 import HomePage from './pages/HomePage';
 import CartPage from './pages/CartPage';
 import LoginPage from './pages/LoginPage';
@@ -17,15 +18,13 @@ import ProductListPage from './pages/ProductListPage';
 import RegisterPage from './pages/RegisterPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-// Protected user pages
+// User Pages
 import UserCartDetailsPage from './pages/user/UserCartDetailsPage';
 import UserOrderDetailsPage from './pages/user/UserOrderDetailsPage';
 import UserOrdersPage from './pages/user/UserOrdersPage';
 import UserProfilePage from './pages/user/UserProfilePage';
 
-import ProtectedRoutesComponent from './components/ProtectedRoutesComponent';
-
-// Protected admin pages
+// Admin Pages
 import AdminAnalyticsPage from './pages/admin/AdminAnalyticsPage';
 import AdminChatsPage from './pages/admin/AdminChatsPage';
 import AdminCreateProductPage from './pages/admin/AdminCreateProductPage';
@@ -40,18 +39,19 @@ function App() {
   return (
     <BrowserRouter>
       <HeaderComponent />
-      <Routes>
-        {/* <Route element={<RoutesWithUserChatComponent />}> */}
-          {/* Public routes */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="/product-list" element={<ProductListPage />} />
-          <Route path="/product-details/:id" element={<ProductDetailsPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
 
-          {/* User protected routes */}
-          <Route element={<ProtectedRoutesComponent admin={false} />}>
+      <Routes>
+        {/* ---------------- PUBLIC ROUTES ---------------- */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/product-list" element={<ProductListPage />} />
+        <Route path="/product-details/:id" element={<ProductDetailsPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+
+        {/* ---------------- USER PROTECTED ROUTES (WITH CHAT) ---------------- */}
+        <Route element={<ProtectedRoutesComponent admin={false} />}>
+          <Route element={<RoutesWithUserChatComponent />}>
             <Route path="/user" element={<UserProfilePage />} />
             <Route path="/user/my-orders" element={<UserOrdersPage />} />
             <Route
@@ -63,10 +63,10 @@ function App() {
               element={<UserOrderDetailsPage />}
             />
           </Route>
-        {/* </Route> */}
+        </Route>
 
-        {/* Admin protected routes */}
-        <Route element={<ProtectedRoutesComponent admin={false} />}>
+        {/* ---------------- ADMIN PROTECTED ROUTES ---------------- */}
+        <Route element={<ProtectedRoutesComponent admin={true} />}>
           <Route path="/admin/users" element={<AdminUsersPage />} />
           <Route path="/admin/edit-user" element={<AdminEditUserPage />} />
           <Route path="/admin/products" element={<AdminProductsPage />} />
@@ -87,9 +87,10 @@ function App() {
           <Route path="/admin/analytics" element={<AdminAnalyticsPage />} />
         </Route>
 
-        {/* Catch-all */}
+        {/* ---------------- CATCH ALL ---------------- */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+
       <FooterComponent />
     </BrowserRouter>
   );
