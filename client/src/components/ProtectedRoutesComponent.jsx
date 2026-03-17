@@ -20,6 +20,4 @@ const ProtectedRoutesComponent = ({ admin }) => {
 
 export default ProtectedRoutesComponent;
 
-/* OK. So, if the admin prop is simply a boolean indicating whether or not authorization is needed to access a particular webpage, that 
-basically means that the logic inside our ProtectedRoutesComponent should not only check if permissions are needed, but whether or not the 
-client has those permissions, right?  */
+

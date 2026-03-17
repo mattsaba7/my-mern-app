@@ -26,7 +26,3 @@ function CategoryCardComponent({ category, index }) {
 }
 
 export default CategoryCardComponent;
-
-/* I'm in the CategoryCardComponent which is within the user directory within the components directory within the src 
-directory within the client directory. The image I want is within the carousel directory which is within the 
-public/images directory which is within the client directory. */

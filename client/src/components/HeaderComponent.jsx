@@ -40,8 +40,6 @@ const HeaderComponent = () => {
               {/* Is this basically a text field with placeholder text "Normal text"? */}
               <Button variant="warning">
                 {' '}
-                {/* Is this basically a submit button for what you type into the text field? Why does it have a variant of warning? What is a variant? Also, is the variant an 
-              attribute or prop? */}
                 <i className="bi bi-search text-dark"></i>
               </Button>
             </InputGroup>
@@ -53,7 +51,6 @@ const HeaderComponent = () => {
                 <span className="position-absolute top-1 start-10 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
               </Nav.Link>
             </LinkContainer>
-
             <NavDropdown title="John Doe" id="basic-nav-dropdown">
               <NavDropdown.Item
                 as={Link}
@@ -61,21 +58,15 @@ const HeaderComponent = () => {
                 to="/user/my-orders"
               >
                 {' '}
-                {/* What does the eventKey do? */}
                 My Orders
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} eventKey="/user" to="/user">
                 {' '}
-                {/* What does the eventKey do? */}
                 My profile
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item>
-                {' '}
-                {/* What does the eventKey do? */}
-                Logout
-              </NavDropdown.Item>
+              <NavDropdown.Item> Logout</NavDropdown.Item>
             </NavDropdown>
             <LinkContainer to="/login">
               <Nav.Link>Login</Nav.Link>
@@ -93,7 +84,6 @@ const HeaderComponent = () => {
               </Nav.Link>
             </LinkContainer>
           </Nav>
-          {/* Right Side Navigation */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
