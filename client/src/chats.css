@@ -28,6 +28,29 @@
 }
 
 #check {
-    display: none !important;
+  display: none !important;
 }
 
+#check:checked ~ .chat-wrapper {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.chat-wrapper {
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 20px;
+  bottom: 100px;
+  z-index: 2;
+  width: 300px;
+  transition: all .4s;
+}
+
+.chat-header {
+    background-color: blue;
+    padding: 13px;
+    margin-bottom: 10px;
+    border-radius: 5px 5px 0px 0px;
+    color: #fff;
+}
