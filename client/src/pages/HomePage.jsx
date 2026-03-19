@@ -4,14 +4,14 @@ import { Row, Container, Col } from 'react-bootstrap';
 
 const HomePage = () => {
   const categories = [
-    'tablets',
-    'monitors',
-    'games',
-    'printers',
-    'software',
-    'cameras',
-    'books',
-    'videos',
+    'Tablets',
+    'Monitors',
+    'Games',
+    'Printers',
+    'Software',
+    'Cameras',
+    'Books',
+    'Videos',
   ];
   return (
     <>
@@ -34,5 +34,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-
