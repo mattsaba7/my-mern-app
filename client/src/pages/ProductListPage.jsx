@@ -14,10 +14,11 @@ const ProductListPage = () => {
       <Row>
         <Col md={3}>
           <ListGroup variant="flush">
-            <ListGroup.Item>
+            <ListGroup.Item className='mb-3 mt-3'>
               <SortOptionsComponent />
             </ListGroup.Item>
             <ListGroup.Item>
+              FILTER: <br />
               <PriceFilterComponent />
             </ListGroup.Item>
             <ListGroup.Item>
