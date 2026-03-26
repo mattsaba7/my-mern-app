@@ -1,4 +1,4 @@
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ProductForListComponent from '../components/ProductForListComponent.jsx';
 import PaginationComponent from '../components/PaginationComponent.jsx';
@@ -31,8 +31,8 @@ const ProductListPage = () => {
               <AttributesFilterComponent />
             </ListGroup.Item>
             <ListGroup.Item>
-              <button variant="primary">Primary</button>
-              <button variant="danger">Danger</button>
+              <Button variant="primary" className="me-2">Filter</Button>
+              <Button variant="danger">Reset Filters</Button>
             </ListGroup.Item>
           </ListGroup>
         </Col>
